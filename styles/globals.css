@@ -2,26 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+h1{
+    font-size: medium;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+h2{
+    font-size: small;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+
+
+.scroll-container { 
+    overflow-x: scroll; 
+    
+} 
+
+.scroll-container::-webkit-scrollbar { 
+    height: 6px;
+    border-radius: 100%;
+} 
+
+.scroll-container::-webkit-scrollbar-track { 
+    background: #f1f1f1; 
+
+} 
+
+.scroll-container::-webkit-scrollbar-thumb { 
+    background: #888; 
+    border-radius: 10%;
+} 
+
+.scroll-container::-webkit-scrollbar-thumb:hover { 
+    background: #555; 
+    
+} 
+
+.scroll-container::-webkit-scrollbar-button { 
+    display: none; 
+} 
+    
