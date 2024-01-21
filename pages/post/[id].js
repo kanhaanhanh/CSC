@@ -2,6 +2,7 @@ import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 import { db } from '@/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
@@ -20,7 +21,7 @@ export default function index({post}) {
       <div className='flex flex-col justify-center items-center'>
         <div className=' p-6 lg:w-1/2 '>
             <div className=' flex my-3 border-b p-3 space-x-3'>
-                <img className='w-32 h-12 object-cover' src={post.image} alt="image" />
+                <Image className='w-32 h-12 object-cover' src={post.image} alt="image" />
                 <div>
                   <div className='flex space-x-3 w-full'>
                     <button className='px-2 py-1 bg-gray-300 text-gray-500 text-sm rounded-lg '>{post.award}</button>

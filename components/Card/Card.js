@@ -1,4 +1,5 @@
-    import Link from 'next/link'
+    import Image from 'next/image'
+import Link from 'next/link'
     import React from 'react'
 
     export default function Card({post}) {
@@ -8,7 +9,7 @@
             <div className='hidden lg:block'>
                 <div className='border rounded-lg shadow-lg p-3 flex space-x-3 w-fit my-6'>
                 <div className='left flex flex-col w-60'>
-                        <img className='w-32 h-12 object-cover' src={post.image} alt="image" />
+                        <Image className='w-32 h-12 object-cover' src={post.image} alt="image" />
                         <p className='text-sm line-clamp-1 capitalize'>{post.university}</p>
                         <p className='text-xs text-gray-600 capitalize' >{post.country},{post.city}</p>
                         <p className='text-xs text-gray-600 capitalize'>{post.department}</p>

@@ -14,7 +14,7 @@ export async function getServerSideProps(context) {
     return { props: { post } };
   }
   
-function index({post}) {
+  export default  function Index({post}) {
   const [id, setId] = useState(post.id);
   const [image, setImage] = useState(post.image);
   const [university, setUniversity] = useState(post.university);
@@ -154,4 +154,3 @@ function index({post}) {
   )
 }
 
-export default index

@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
 
-export default function index() {
+export default function Index() {
     const route = useRouter();
     const signInWithGoogle = async (e) => {
         e.preventDefault();

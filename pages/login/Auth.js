@@ -9,5 +9,5 @@ export default function Auth() {
         if (user.id.length != 28) {
           router.push('/login')
         }
-    },[])
+    },[router])
 }

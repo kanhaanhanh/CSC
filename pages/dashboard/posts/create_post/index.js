@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Auth from '@/pages/login/Auth';
 import Footer from '@/components/Footer/Footer';
 
-export default function index() {
+export default function Index() {
   Auth();
   const [image, setImage] = useState('');
   const [university, setUniversity] = useState('');
