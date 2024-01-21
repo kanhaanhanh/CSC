@@ -67,7 +67,6 @@ function Pagination({setpoststate}) {
 
   if (posts.length==0) {
     fetch();
-    console.log("loading");
   }
 
   if ( pageNum > lastPage) {

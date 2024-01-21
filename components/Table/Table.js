@@ -25,7 +25,7 @@ export default function Table({th,name,posts}) {
     try {
     setDailog(!dailog);
     await deleteDoc(doc(db,'posts',id));
-    router.push('/dashboard/posts');
+    router.push('/');
     toast.success('Deleted Successfully', {
         position: 'top-center',
       });
