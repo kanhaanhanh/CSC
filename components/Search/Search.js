@@ -3,7 +3,6 @@ import Submit from '../Button/Submit'
 import data from '@/public/data'
 
 export default function Search({handleChange,handleSubmit,handleFilter,filter}) {
-   const [continents, setcontinents] = useState(data.continents);
    const [programs, setprograms] = useState(data.programs);
    const [countries, setcountries] = useState(data.countries);
    const [languages, setlanguages] = useState(data.language)
@@ -16,23 +15,13 @@ export default function Search({handleChange,handleSubmit,handleFilter,filter}) 
                     <h1>Find Program</h1>
                     <svg xmlns="http://www.w3.org/2000/svg" className='hover:scale-105 cursor-pointer' onClick={handleFilter} width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M10 18v-2h4v2zm-4-5v-2h12v2zM3 8V6h18v2z"/></svg>
                 </div>
-                <div className='w-96 lg:w-1/2 grid lg:grid-cols-5 gap-3 md:grid-cols-3 grid-cols-2'>
+                <div className='w-96 lg:w-1/2 grid lg:grid-cols-4 gap-3 md:grid-cols-3 grid-cols-2'>
                     <div className=' mt-3 space-y-2'>
                         <h2>Program :</h2>
                         {
                             programs.map((program,i)=>(
                                 <div className=' flex space-x-2 items-center' key={i}>
                                     <input onChange={handleChange} value={program.toLowerCase()} type="radio" className='text-black' id='program' name='program'/><span className='text-xs'>{program}</span>
-                                </div>
-                            ))
-                        }
-                    </div>
-                    <div className=' mt-3 space-y-2'>
-                        <h2>Contitent :</h2>
-                        {
-                            continents.map((continent,i)=>(
-                                <div className=' flex space-x-2 items-center' key={i}>
-                                    <input onChange={handleChange} value={continent.name} type="radio" className='text-black' id='continent' name='continent'/><span className='text-xs'>{continent.name}</span>
                                 </div>
                             ))
                         }

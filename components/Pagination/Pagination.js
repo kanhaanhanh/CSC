@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 function Pagination({setpoststate}) {
   const [posts,setposts]= useState([]);
   const [currentData,setcurrentdata]=useState(null);
-  const [pageSize,setpagesize]= useState(15);
+  const [pageSize,setpagesize]= useState(10);
   const [pageNum,setpagenum] = useState(1);
   const [total, settotal] = useState();
   const lastPage = Math.ceil(total/pageSize);
@@ -64,10 +64,9 @@ function Pagination({setpoststate}) {
    
   }
 
-
-  if (posts.length==0) {
+  useEffect(()=>{
     fetch();
-  }
+  },[])
 
   if ( pageNum > lastPage) {
     setpagenum(1)
@@ -80,11 +79,11 @@ function Pagination({setpoststate}) {
     <div className='mt-3'>
       <div className='flex items-center'>
       <p className='text-xs mx-3'>Total items : {total}</p>
-      <button disabled={pageNum==1}  className='border m-1 text-xs py-1 px-3 rounded-l-full text-center shadow-lg hover:scale-105 transition-all' onClick={()=>handleClick(event,"prev")}>Back</button>
+      <button disabled={pageNum==1}  className='border m-1 text-xs py-1 px-3 rounded-l-full text-center shadow-lg hover:scale-105 transition-all' onClick={(event)=>handleClick(event,"prev")}>Back</button>
       <div className='border m-1 text-xs py-1 px-3 text-center shadow-lg hover:scale-105 transition-all w-fit'>
         {pageNum}
       </div>
-      <button disabled={posts.length<pageSize || pageNum == lastPage} className='border m-1 text-xs py-1 px-3 rounded-r-full text-center shadow-lg hover:scale-105 transition-all' onClick={()=>handleClick(event,"next")}>Next </button>
+      <button disabled={posts.length<pageSize || pageNum == lastPage} className='border m-1 text-xs py-1 px-3 rounded-r-full text-center shadow-lg hover:scale-105 transition-all' onClick={(event)=>handleClick(event,"next")}>Next </button>
       </div>
     </div>
   );

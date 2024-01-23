@@ -59,14 +59,6 @@ export default function Home() {
           collection(db, "posts"),
           where("country", "==",filterCountry.toLowerCase()), 
         );
-      } else if (continent.toLocaleLowerCase()=="none") {
-         q = query(
-          collection(db, "posts"),
-          where("deadline", "<=",deadline.toISOString()), 
-          where("program", "array-contains",program.toLowerCase()), 
-          where("language", "==",language.toLowerCase()), 
-          where("country", "==",country.toLowerCase()), 
-        );
       }else{
          q = query(
           collection(db, "posts"),
@@ -74,7 +66,6 @@ export default function Home() {
           where("program", "array-contains",program.toLowerCase()), 
           where("language", "==",language.toLowerCase()), 
           where("country", "==",country.toLowerCase()), 
-          where("continent", "==",continent.toLowerCase()), 
         );
       }
       setLoading('loading')
