@@ -2,7 +2,6 @@ import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 import { db } from '@/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
@@ -21,7 +20,7 @@ export default function index({post}) {
       <div className='flex flex-col justify-center items-center'>
         <div className=' p-6 lg:w-1/2 '>
             <div className=' flex my-3 border-b p-3 space-x-3'>
-                <Image className='w-32 h-12 object-cover' src={post.image} alt="image" />
+                <img className='w-32 max-h-20 object-cover' src={post.image} alt="image" />
                 <div>
                   <div className='flex space-x-3 w-full'>
                     <button className='px-2 py-1 bg-gray-300 text-gray-500 text-sm rounded-lg '>{post.award}</button>
@@ -61,7 +60,7 @@ export default function index({post}) {
               <div className='flex space-x-3 mt-1 items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72L5.18 9L12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
                 <div>
-                    <p className='text-xs font-medium'>Application Deadline : {post.date}</p>
+                    <p className='text-xs font-medium'>Application Deadline : {post.deadline.slice(0,10)}</p>
                 </div>
               </div>
               <div className='my-3'>

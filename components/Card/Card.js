@@ -9,8 +9,8 @@
             <div className='hidden lg:block'>
                 <div className='border rounded-lg shadow-lg p-3 flex space-x-3 w-fit my-6'>
                 <div className='left flex flex-col w-60'>
-                        <div className='w-32 h-12 '>
-                        <img className='object-cover w-32 h-12 ' src={post.image} alt="image" />
+                        <div className='w-32  '>
+                        <img className='object-cover w-32 max-h-20 ' src={post.image} alt="image" />
                         </div>
                         <p className='text-sm line-clamp-1 capitalize'>{post.university}</p>
                         <p className='text-xs text-gray-600 capitalize' >{post.country},{post.city}</p>
