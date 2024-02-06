@@ -7,7 +7,7 @@ import Auth from '@/pages/login/Auth';
 import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore';
 import React, { useState } from 'react'
 function Index() {
-  const th = [ 'No.','Universiy','Location','City','Type','Deadline','Action' ];
+  const th = [ 'No.','Scholarship','Location','Continent','Type','Deadline','Action' ];
   const tbName = 'Post';
   const [posts, setposts] = useState([]);
   Auth();
