@@ -6,7 +6,7 @@ import { collection, deleteDoc, doc, getDocs, limit, orderBy, query, setDoc } fr
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 
-export default function index() {
+export default function Index() {
   const [countries,setCountries] = useState([]);
   const [languages,setLanguages] = useState([]);
   const [programs,setPrograms]= useState([]);
