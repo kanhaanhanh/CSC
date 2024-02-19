@@ -1,11 +1,38 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Submit from '../Button/Submit'
 import data from '@/public/data'
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import { db } from '@/firebaseConfig';
 
 export default function Search({handleChange,handleSubmit,handleFilter,filter}) {
-   const [programs, setprograms] = useState(data.programs);
-   const [countries, setcountries] = useState(data.countries);
-   const [languages, setlanguages] = useState(data.language)
+   const [programs, setPrograms] = useState([]);
+   const [countries, setCountries] = useState([]);
+   const [languages, setLanguages] = useState([])
+   const fetchCountries = async ()=>{
+    const q = query(collection(db, "countries"),orderBy("country","asc"));
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((doc) => ({ ...doc.data(),id:doc.id }));
+    setCountries(data);
+    console.log(data);
+  }
+  const fetchLanguages = async ()=>{
+    const q = query(collection(db, "languages"),orderBy("language","asc"));
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((doc) => ({  ...doc.data(),id:doc.id }));
+    setLanguages(data);
+  }
+  const fetchPrograms = async ()=>{
+    const q = query(collection(db, "programs"),orderBy("program","asc"));
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((doc) => ({  ...doc.data(),id:doc.id }));
+    setPrograms(data);
+  }
+  useEffect(()=>{
+    fetchCountries();
+    fetchLanguages();
+    fetchPrograms();
+  },[])
+
   return (
     <div>
         {
@@ -19,9 +46,9 @@ export default function Search({handleChange,handleSubmit,handleFilter,filter}) 
                     <div className=' mt-3 space-y-2'>
                         <h2>Program :</h2>
                         {
-                            programs.map((program,i)=>(
+                            programs.map((item,i)=>(
                                 <div className=' flex space-x-2 items-center' key={i}>
-                                    <input onChange={handleChange} value={program.toLowerCase()} type="radio" className='text-black' id='program' name='program'/><span className='text-xs'>{program}</span>
+                                    <input onChange={handleChange} value={item.program.toLowerCase()} type="radio" className='text-black' id='program' name='program'/><span className='text-xs'>{item.program}</span>
                                 </div>
                             ))
                         }
@@ -31,8 +58,8 @@ export default function Search({handleChange,handleSubmit,handleFilter,filter}) 
                         <select name="country" className='text-xs focus:outline-none w-28' onChange={handleChange} id="">
                             <option value="" >Select Country</option>
                             {
-                                countries.map((country,i)=>(
-                                    <option value={country}  key={i}>{country}</option>
+                                countries.map((item,i)=>(
+                                    <option value={item.country}  key={i}>{item.country}</option>
                                 ))
                             }
                         </select>
@@ -40,9 +67,9 @@ export default function Search({handleChange,handleSubmit,handleFilter,filter}) 
                     <div className=' mt-3 space-y-2'>
                         <h2>Language :</h2>
                         {
-                            languages.map((language,i)=>(
+                            languages.map((item,i)=>(
                                 <div className=' flex space-x-2 items-center' key={i}> 
-                                    <input onChange={handleChange} value={language.toLowerCase()} type="radio" className='text-black' id='language' name='language'/><span className='text-xs'>{language}</span>
+                                    <input onChange={handleChange} value={item.language.toLowerCase()} type="radio" className='text-black' id='language' name='language'/><span className='text-xs'>{item.language}</span>
                                 </div>
                             ))
                         }
@@ -72,8 +99,8 @@ export default function Search({handleChange,handleSubmit,handleFilter,filter}) 
                                 <select name="filterCountry" className='text-xs focus:outline-none w-28' onChange={handleChange} id="">
                                     <option value="" >Select Country</option>
                                     {
-                                        countries.map((country,i)=>(
-                                            <option value={country}  key={i}>{country}</option>
+                                        countries.map((item,i)=>(
+                                            <option value={item.country}  key={i}>{item.country}</option>
                                         ))
                                     }
                                 </select>

@@ -48,7 +48,7 @@ export default function index() {
 
 
   const fetchCountries = async ()=>{
-    const q = query(collection(db, "countries"),orderBy("country","asc"),limit(10));
+    const q = query(collection(db, "countries"),orderBy("country","asc"));
     const querySnapshot = await getDocs(q);
     const data = querySnapshot.docs.map((doc) => ({ ...doc.data(),id:doc.id }));
     setCountries(data);
